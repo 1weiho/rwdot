@@ -1,8 +1,6 @@
 /* Dot Styles */
 .dot {
   position: fixed;
-  bottom: 16px;
-  left: 16px;
   z-index: 50;
   display: flex;
   height: 32px;
@@ -15,6 +13,26 @@
   font-size: 12px;
   color: #ffffff;
   transition: width 0.5s ease;
+}
+
+.dot-bottom-left {
+  bottom: 16px;
+  left: 16px;
+}
+
+.dot-bottom-right {
+  bottom: 16px;
+  right: 16px;
+}
+
+.dot-top-left {
+  top: 16px;
+  left: 16px;
+}
+
+.dot-top-right {
+  top: 16px;
+  right: 16px;
 }
 
 .dot:hover {

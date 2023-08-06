@@ -1,10 +1,16 @@
 import * as React from 'react';
 import './styles.css';
 
-const Rwdot = () => {
+type RwdotProps = {
+  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+};
+
+const Rwdot = (Props: RwdotProps) => {
   const [isHovered, setIsHovered] = React.useState(false);
   const [screenWidth, setScreenWidth] = React.useState(0);
   const [breakpointPrefix, setBreakpointPrefix] = React.useState('xs');
+
+  const position = Props.position || 'bottom-left';
 
   const handleHover = () => {
     setIsHovered(true);
@@ -42,7 +48,7 @@ const Rwdot = () => {
 
   return (
     <div
-      className="dot"
+      className={`dot dot-${position}`}
       onMouseEnter={handleHover}
       onMouseLeave={handleHoverOut}
     >
