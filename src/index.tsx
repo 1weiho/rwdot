@@ -5,10 +5,13 @@ type RwdotProps = {
   position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 };
 
+type BreakpointPrefix = '2xl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+
 const Rwdot = (Props: RwdotProps) => {
-  const [isHovered, setIsHovered] = React.useState(false);
-  const [screenWidth, setScreenWidth] = React.useState(0);
-  const [breakpointPrefix, setBreakpointPrefix] = React.useState('xs');
+  const [isHovered, setIsHovered] = React.useState<boolean>(false);
+  const [screenWidth, setScreenWidth] = React.useState<number | null>(null);
+  const [breakpointPrefix, setBreakpointPrefix] =
+    React.useState<BreakpointPrefix | null>(null);
 
   const position = Props.position || 'bottom-left';
 
@@ -24,6 +27,11 @@ const Rwdot = (Props: RwdotProps) => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
     };
+
+    // Get initial window width and set breakpointPrefix on first render
+    handleResize();
+    setBreakpointPrefix(getBreakpointPrefix(window.innerWidth));
+
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -31,20 +39,25 @@ const Rwdot = (Props: RwdotProps) => {
   }, []);
 
   React.useEffect(() => {
-    if (screenWidth >= 1536) {
-      setBreakpointPrefix('2xl');
-    } else if (screenWidth >= 1280) {
-      setBreakpointPrefix('xl');
-    } else if (screenWidth >= 1024) {
-      setBreakpointPrefix('lg');
-    } else if (screenWidth >= 768) {
-      setBreakpointPrefix('md');
-    } else if (screenWidth >= 640) {
-      setBreakpointPrefix('sm');
-    } else {
-      setBreakpointPrefix('xs');
-    }
+    // Update breakpointPrefix when screenWidth changes
+    setBreakpointPrefix(getBreakpointPrefix(screenWidth));
   }, [screenWidth]);
+
+  const getBreakpointPrefix = (width: number): BreakpointPrefix => {
+    if (width >= 1536) {
+      return '2xl';
+    } else if (width >= 1280) {
+      return 'xl';
+    } else if (width >= 1024) {
+      return 'lg';
+    } else if (width >= 768) {
+      return 'md';
+    } else if (width >= 640) {
+      return 'sm';
+    } else {
+      return 'xs';
+    }
+  };
 
   return (
     <div
@@ -52,10 +65,12 @@ const Rwdot = (Props: RwdotProps) => {
       onMouseEnter={handleHover}
       onMouseLeave={handleHoverOut}
     >
-      <div className="dot-info">
-        <p>{breakpointPrefix}</p>
-        {isHovered && <p>, width: {screenWidth}px</p>}
-      </div>
+      {breakpointPrefix !== null && (
+        <div className="dot-info">
+          <p>{breakpointPrefix}</p>
+          {isHovered && <p>, width: {screenWidth}px</p>}
+        </div>
+      )}
     </div>
   );
 };
