@@ -3,7 +3,7 @@ import './styles.css';
 
 const Rwdot = () => {
   const [isHovered, setIsHovered] = React.useState(false);
-  const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
+  const [screenWidth, setScreenWidth] = React.useState(0);
   const [breakpointPrefix, setBreakpointPrefix] = React.useState('xs');
 
   const handleHover = () => {
@@ -48,7 +48,7 @@ const Rwdot = () => {
     >
       <div className="dot-info">
         <p>{breakpointPrefix}</p>
-        {isHovered && <p>, width: {window.innerWidth}px</p>}
+        {isHovered && <p>, width: {screenWidth}px</p>}
       </div>
     </div>
   );
