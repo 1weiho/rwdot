@@ -1,61 +1,57 @@
-import * as React from "react";
-import "./styles.css";
+import * as React from 'react';
+import './styles.css';
 
 const Rwdot = () => {
-    const [isHovered, setIsHovered] = React.useState(false);
+  const [isHovered, setIsHovered] = React.useState(false);
+  const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
+  const [breakpointPrefix, setBreakpointPrefix] = React.useState('xs');
 
-    const handleHover = () => {
-        setIsHovered(true);
+  const handleHover = () => {
+    setIsHovered(true);
+  };
+
+  const handleHoverOut = () => {
+    setIsHovered(false);
+  };
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
     };
-
-    const handleHoverOut = () => {
-        setIsHovered(false);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
     };
+  }, []);
 
-    return (
-        <div
-            className="dot"
-            onMouseEnter={handleHover}
-            onMouseLeave={handleHoverOut}
-        >
-            <div className="dot-xs">
-                <div className="dot-info">
-                    <p>xs</p>
-                    {isHovered && <p>, width: {window.innerWidth}</p>}
-                </div>
-            </div>
-            <div className="dot-sm">
-                <div className="dot-info">
-                    <p>sm</p>
-                    {isHovered && <p>, width: {window.innerWidth}</p>}
-                </div>
-            </div>
-            <div className="dot-md">
-                <div className="dot-info">
-                    <p>md</p>
-                    {isHovered && <p>, width: {window.innerWidth}</p>}
-                </div>
-            </div>
-            <div className="dot-lg">
-                <div className="dot-info">
-                    <p>lg</p>
-                    {isHovered && <p>, width: {window.innerWidth}</p>}
-                </div>
-            </div>
-            <div className="dot-xl">
-                <div className="dot-info">
-                    <p>xl</p>
-                    {isHovered && <p>, width: {window.innerWidth}</p>}
-                </div>
-            </div>
-            <div className="dot-2xl">
-                <div className="dot-info">
-                    <p>2xl</p>
-                    {isHovered && <p>, width: {window.innerWidth}</p>}
-                </div>
-            </div>
-        </div>
-    );
+  React.useEffect(() => {
+    if (screenWidth >= 1536) {
+      setBreakpointPrefix('2xl');
+    } else if (screenWidth >= 1280) {
+      setBreakpointPrefix('xl');
+    } else if (screenWidth >= 1024) {
+      setBreakpointPrefix('lg');
+    } else if (screenWidth >= 768) {
+      setBreakpointPrefix('md');
+    } else if (screenWidth >= 640) {
+      setBreakpointPrefix('sm');
+    } else {
+      setBreakpointPrefix('xs');
+    }
+  }, [screenWidth]);
+
+  return (
+    <div
+      className="dot"
+      onMouseEnter={handleHover}
+      onMouseLeave={handleHoverOut}
+    >
+      <div className="dot-info">
+        <p>{breakpointPrefix}</p>
+        {isHovered && <p>, width: {window.innerWidth}px</p>}
+      </div>
+    </div>
+  );
 };
 
 export { Rwdot };
