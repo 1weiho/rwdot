@@ -20,3 +20,19 @@ export const RwdotTopLeft = () => {
 export const RwdotTopRight = () => {
   return <Rwdot position="top-right" />;
 };
+
+export const RwdotDefaultShowSize = () => {
+  return <Rwdot showSize />;
+};
+
+export const RwdotBottomRightShowSize = () => {
+  return <Rwdot position="bottom-right" showSize />;
+};
+
+export const RwdotTopLeftShowSize = () => {
+  return <Rwdot position="top-left" showSize />;
+};
+
+export const RwdotTopRightShowSize = () => {
+  return <Rwdot position="top-right" showSize />;
+};

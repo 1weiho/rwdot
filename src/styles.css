@@ -26,6 +26,11 @@
   }
 }
 
+.dot:active {
+  transform: scale(0.85);
+  transition: transform 0.5s ease;
+}
+
 .dot-bottom-left {
   bottom: 16px;
   left: 16px;
@@ -46,10 +51,15 @@
   right: 16px;
 }
 
-.dot:hover {
+.dot-full {
   width: 150px;
   cursor: pointer;
   transition: width 0.5s ease;
+}
+
+.dot-full-mode {
+  outline: solid 3px rgb(90, 164, 207);
+  outline-offset: -3px;
 }
 
 .dot-info {

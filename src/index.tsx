@@ -4,6 +4,7 @@ import { BreakpointPrefix, RwdotProps } from './types';
 
 const Rwdot = (Props: RwdotProps) => {
   const [isHovered, setIsHovered] = React.useState<boolean>(false);
+  const [dotFullMode, setDotFullMode] = React.useState<boolean>(false);
   const [screenWidth, setScreenWidth] = React.useState<number | null>(null);
   const [screenHeight, setScreenHeight] = React.useState<number | null>(null);
   const [breakpointPrefix, setBreakpointPrefix] =
@@ -17,6 +18,10 @@ const Rwdot = (Props: RwdotProps) => {
 
   const handleHoverOut = () => {
     setIsHovered(false);
+  };
+
+  const handleDotClick = () => {
+    setDotFullMode(!dotFullMode);
   };
 
   React.useEffect(() => {
@@ -58,14 +63,17 @@ const Rwdot = (Props: RwdotProps) => {
 
   return (
     <div
-      className={`dot dot-${position}`}
+      className={`dot dot-${position} ${
+        isHovered || Props.showSize || dotFullMode ? `dot-full` : ``
+      } ${Props.showSize || dotFullMode ? `dot-full-mode` : ``}`}
       onMouseEnter={handleHover}
       onMouseLeave={handleHoverOut}
+      onClick={handleDotClick}
     >
       {breakpointPrefix !== null && (
         <div className="dot-info">
           <p>{breakpointPrefix}</p>
-          {isHovered && (
+          {(isHovered || Props.showSize || dotFullMode) && (
             <p>
               , {screenWidth} x {screenHeight}
             </p>
