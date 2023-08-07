@@ -1,11 +1,6 @@
 import * as React from 'react';
 import './styles.css';
-
-type RwdotProps = {
-  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-};
-
-type BreakpointPrefix = '2xl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+import { BreakpointPrefix, RwdotProps } from './types';
 
 const Rwdot = (Props: RwdotProps) => {
   const [isHovered, setIsHovered] = React.useState<boolean>(false);
