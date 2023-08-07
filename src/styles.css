@@ -36,7 +36,7 @@
 }
 
 .dot:hover {
-  width: 160px;
+  width: 150px;
   cursor: pointer;
   transition: width 0.5s ease;
 }

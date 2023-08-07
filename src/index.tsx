@@ -5,6 +5,7 @@ import { BreakpointPrefix, RwdotProps } from './types';
 const Rwdot = (Props: RwdotProps) => {
   const [isHovered, setIsHovered] = React.useState<boolean>(false);
   const [screenWidth, setScreenWidth] = React.useState<number | null>(null);
+  const [screenHeight, setScreenHeight] = React.useState<number | null>(null);
   const [breakpointPrefix, setBreakpointPrefix] =
     React.useState<BreakpointPrefix | null>(null);
 
@@ -21,6 +22,7 @@ const Rwdot = (Props: RwdotProps) => {
   React.useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
+      setScreenHeight(window.innerHeight);
     };
 
     // Get initial window width and set breakpointPrefix on first render
@@ -63,7 +65,11 @@ const Rwdot = (Props: RwdotProps) => {
       {breakpointPrefix !== null && (
         <div className="dot-info">
           <p>{breakpointPrefix}</p>
-          {isHovered && <p>, width: {screenWidth}px</p>}
+          {isHovered && (
+            <p>
+              , {screenWidth} x {screenHeight}
+            </p>
+          )}
         </div>
       )}
     </div>
