@@ -13,6 +13,17 @@
   font-size: 12px;
   color: #ffffff;
   transition: width 0.5s ease;
+  box-shadow: 6px 6px 35px -8px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 6px 6px 35px -8px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 6px 6px 35px -8px rgba(0, 0, 0, 0.35);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .dot {
+    background-color: #ffffff;
+    color: #1f2937;
+  }
 }
 
 .dot-bottom-left {
