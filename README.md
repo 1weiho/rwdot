@@ -1,6 +1,8 @@
-## Introduction
+![cover](https://github.com/davidho0403/rwdot/assets/75478661/43988797-e4bd-41df-b89b-46a6d210de0f)
 
-rwdot is a RWD tool designed for Tailwind CSS development.
+# Introduction
+
+[rwdot](https://github.com/davidho0403/rwdot) is a RWD tool designed for Tailwind CSS development.
 It allows you to quickly determine which Tailwind size variant corresponds to the current window size,
 helping you build responsive websites more conveniently.
 
