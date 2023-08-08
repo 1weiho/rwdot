@@ -48,7 +48,13 @@ const useScreenSizeInfo = () => {
   return { breakpointPrefix, screenWidth, screenHeight };
 };
 
-const Rwdot = ({ position = 'bottom-left', showSize = false }: RwdotProps) => {
+const Rwdot = ({
+  position = 'bottom-left',
+  showSize = false,
+  show = true,
+}: RwdotProps) => {
+  if (!show) return;
+
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [dotFullMode, setDotFullMode] = useState<boolean>(false);
   const { breakpointPrefix, screenWidth, screenHeight } = useScreenSizeInfo();

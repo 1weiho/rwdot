@@ -36,3 +36,7 @@ export const RwdotTopLeftShowSize = () => {
 export const RwdotTopRightShowSize = () => {
   return <Rwdot position="top-right" showSize />;
 };
+
+export const RwdotDefaultHide = () => {
+  return <Rwdot show={false} />;
+};
