@@ -1,7 +1,7 @@
 {
   "name": "rwdot",
-  "version": "0.0.4",
-  "description": "",
+  "version": "0.0.5",
+  "description": "A RWD tool designed for Tailwind CSS development.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsup",
@@ -9,9 +9,21 @@
     "dev": "ladle serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "react",
+    "tailwind",
+    "tailwindcss",
+    "rwd"
+  ],
+  "author": "Ho Yi Wei <@davidho0403>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidho0403/rwdot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davidho0403/rwdot/issues"
+  },
   "files": [
     "dist"
   ],
